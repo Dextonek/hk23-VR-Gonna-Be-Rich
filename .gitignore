@@ -1,0 +1,4 @@
+# Jetbrain Rider Cache
+.idea/
+Assets/Plugins/Editor/JetBrains*
+pridat do .gitignore
