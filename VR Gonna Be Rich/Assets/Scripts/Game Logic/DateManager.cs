@@ -12,7 +12,7 @@ namespace Game_Logic
         private bool _advanceTime;
         private float _advanceTimeCounter;
 
-        public DateManager Instance { get; private set; }
+        public static DateManager Instance { get; private set; }
 
         public DateTime CurrentDate
         {
