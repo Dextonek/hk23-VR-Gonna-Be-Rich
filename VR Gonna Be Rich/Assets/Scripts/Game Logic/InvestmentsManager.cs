@@ -13,6 +13,8 @@ namespace Game_Logic
 
         private float _investments;
 
+        private float _transferAmount;
+
         public float Investments
         {
             set
@@ -64,6 +66,24 @@ namespace Game_Logic
         private void EarnMoney(DateTime currentDate)
         {
             _investments *= IncreaseConstant;
+        }
+        
+        private void TransferMoneyInitiation(float amount)
+        {
+            if (amount + _transferAmount > _investments)
+                return;
+            
+            _transferAmount += amount;
+            DateManager.Instance.OnMonthAdvanced += TransferMoneyToBankAccount;
+        }
+
+        private void TransferMoneyToBankAccount(DateTime currentDate)
+        {
+            Investments -= _transferAmount;
+            BankAccountManager.Instance.Balance += _transferAmount;
+            _transferAmount = 0;
+
+            DateManager.Instance.OnMonthAdvanced -= TransferMoneyToBankAccount;
         }
     }
 }
