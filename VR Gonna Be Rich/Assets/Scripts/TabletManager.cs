@@ -12,6 +12,8 @@ public class TabletManager : MonoBehaviour
     {
         InvestmentsAmountChanged(InvestmentsManager.Instance.Investments);
         InvestmentsManager.Instance.OnInvestmentsChanged += InvestmentsAmountChanged;
+        
+        canvasObject.SetActive(false);
     }
 
     public void InvestmentsAmountChanged(float value)
@@ -29,5 +31,19 @@ public class TabletManager : MonoBehaviour
     {
         graphObject.SetActive(true);
         canvasObject.SetActive(false);
+    }
+
+    public void AddMoney()
+    {
+        if (BankAccountManager.Instance.Balance < 100f)
+            return;
+        
+        BankAccountManager.Instance.Balance -= 100f;
+        InvestmentsManager.Instance.Investments += 100f;
+    }
+
+    public void WithdrawMoney()
+    {
+        InvestmentsManager.Instance.TransferMoneyInitiation(100f);
     }
 }

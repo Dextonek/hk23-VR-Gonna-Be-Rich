@@ -14,6 +14,7 @@ public class WalletManager : MonoBehaviour
     {
         BankAccountValueChanged(BankAccountManager.Instance.Balance);
         BankAccountManager.Instance.OnAccountBalanceChanged += BankAccountValueChanged;
+        canvasGameObject.SetActive(false);
     }
 
     public void OnGrabbed()
