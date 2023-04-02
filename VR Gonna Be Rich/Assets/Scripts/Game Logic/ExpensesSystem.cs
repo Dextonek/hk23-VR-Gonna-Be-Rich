@@ -8,7 +8,7 @@ namespace Game_Logic
     public struct Expense
     {
         public string Name { get;}
-        public float Amount { get;}
+        public float Amount { get;} 
 
         public Expense(string name, float amount)
         {
