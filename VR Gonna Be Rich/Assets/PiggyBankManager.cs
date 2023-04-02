@@ -9,7 +9,7 @@ public class PiggyBankManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        piggyBankValue.text = "8000€";
+       
     }
 
     // Update is called once per frame
