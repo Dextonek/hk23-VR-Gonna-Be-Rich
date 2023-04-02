@@ -43,5 +43,10 @@ namespace Game_Logic
             if (Instance == this)
                 Instance = null;
         }
+
+        private void OnEnable()
+        {
+            Balance = GameStarter.StartingBankAccountBalance;
+        }
     }
 }

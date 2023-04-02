@@ -26,7 +26,7 @@ namespace Game_Logic
         {
             set
             {
-                if (value.SequenceEqual(_earnings))
+                if (_earnings != null && value.SequenceEqual(_earnings))
                     return;
     
                 _earnings = value;
@@ -59,11 +59,13 @@ namespace Game_Logic
         private void OnEnable()
         {
             DateManager.Instance.OnMonthAdvanced += GetEarnings;
+
+            Earnings = GameStarter.StartingEarnings;
         }
     
         private void OnDisable()
         {
-            if (!BankAccountManager.Instance)
+            if (!DateManager.Instance)
                 return;
                 
             DateManager.Instance.OnMonthAdvanced -= GetEarnings;

@@ -53,6 +53,8 @@ namespace Game_Logic
         private void OnEnable()
         {
             DateManager.Instance.OnMonthAdvanced += EarnMoney;
+
+            Investments = GameStarter.StartingInvestmentAccountBalance;
         }
     
         private void OnDisable()
