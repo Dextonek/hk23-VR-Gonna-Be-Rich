@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class WalletManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI walletMoneyValue;
+    [SerializeField] private TextMeshProUGUI walletValue;
     
     // Start is called before the first frame update
     void Start()
     {
-        walletMoneyValue.text = "500";
+        walletValue.text = "50€";
     }
 
     // Update is called once per frame

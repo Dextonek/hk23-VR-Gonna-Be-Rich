@@ -51,6 +51,8 @@ namespace Game_Logic
         private void OnEnable()
         {
             DateManager.Instance.OnMonthAdvanced += IncreaseMonthCounter;
+
+            Savings = GameStarter.StartingSavingsAccountBalance;
         }
     
         private void OnDisable()
