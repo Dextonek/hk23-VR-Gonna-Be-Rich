@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PiggyBankManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI piggyBankValue;
+    [SerializeField] private TextMeshProUGUI walletValue;
+    
     // Start is called before the first frame update
     void Start()
     {
-       
+        
     }
 
     // Update is called once per frame
