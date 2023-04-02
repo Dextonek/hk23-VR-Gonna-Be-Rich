@@ -79,7 +79,7 @@ namespace Game_Logic
             Savings *= IncreaseConstant;
         }
 
-        private void TransferMoneyInitiation(float amount)
+        public void TransferMoneyInitiation(float amount)
         {
             if (amount + _transferAmount > _savings)
                 return;

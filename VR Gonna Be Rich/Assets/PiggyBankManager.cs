@@ -15,6 +15,8 @@ public class PiggyBankManager : MonoBehaviour
     {
         SavingsChanged(SavingsSystem.Instance.Savings);
         SavingsSystem.Instance.OnSavingsChanged += SavingsChanged;
+
+        canvasGameObject.SetActive(false);
     }
 
     private void SavingsChanged(float value)
@@ -30,5 +32,19 @@ public class PiggyBankManager : MonoBehaviour
     public void OnDropped()
     {
         canvasGameObject.SetActive(false);
+    }
+    
+    public void AddMoney()
+    {
+        if (BankAccountManager.Instance.Balance < 100f)
+            return;
+        
+        BankAccountManager.Instance.Balance -= 100f;
+        SavingsSystem.Instance.Savings += 100f;
+    }
+
+    public void WithdrawMoney()
+    {
+        SavingsSystem.Instance.TransferMoneyInitiation(100f);
     }
 }
