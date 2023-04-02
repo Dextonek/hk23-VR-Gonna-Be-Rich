@@ -21,7 +21,7 @@ public class PiggyBankManager : MonoBehaviour
 
     private void SavingsChanged(float value)
     {
-        savingsAmount.text = value.ToString("F2");
+        savingsAmount.text = "Savings" + value.ToString("F2");
     }
 
     public void OnGrabbed()

@@ -41,19 +41,19 @@ public class WhiteboardRightManager : MonoBehaviour
 
     public void BankAccountBalanceChanged(float value)
     {
-        bankAccountBalanceField.text = value.ToString("F2");
+        bankAccountBalanceField.text ="Bank account balance: " +  value.ToString("F2");
         CalculateNetWorth();
     }
     
     public void SavingsAccountBalanceChanged(float value)
     {
-        savingsAccountBalanceField.text = value.ToString("F2");
+        savingsAccountBalanceField.text ="Savings: " + value.ToString("F2");
         CalculateNetWorth();
     }
     
     public void InvestmentsAccountBalanceChanged(float value)
     {
-        investmentsAccountBalanceField.text = value.ToString("F2");
+        investmentsAccountBalanceField.text ="Investments: " + value.ToString("F2");
         CalculateNetWorth();
     }
 
