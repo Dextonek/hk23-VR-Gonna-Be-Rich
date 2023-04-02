@@ -1,13 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
+using Game_Logic;
 using TMPro;
 using UnityEngine;
 
 public class WhiteboardRightManager : MonoBehaviour
 {
     private DateTime _date;
+    private float _balance;
+    private float _saveingBalance;
+    private float _investment;
+    
 
     [SerializeField]
     private TextMeshProUGUI dateField;
@@ -16,6 +19,8 @@ public class WhiteboardRightManager : MonoBehaviour
     {
         _date = DateTime.Today;
         dateField.text = _date.ToString(CultureInfo.CurrentCulture);
+            
+        
     }
 
     // Update is called once per frame
