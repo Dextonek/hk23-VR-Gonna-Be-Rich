@@ -29,16 +29,16 @@ public class WhiteBoardLeftManager : MonoBehaviour
             
             if (expense.Name == "Rent")
             {
-                rentValueText.text = expense.Amount.ToString("F2");
+                rentValueText.text ="-" + expense.Amount.ToString("F2");
             }
 
             if (expense.Name == "Food")
             {
-                foodValueText.text = expense.Amount.ToString("F2");
+                foodValueText.text ="-" + expense.Amount.ToString("F2");
             }
         }
 
-        totalValueText.text = _total.ToString("F2");
+        totalValueText.text ="-" + _total.ToString("F2");
 
         earningsValueText.text = EarningSystem.Instance.Earnings.ToArray()[0].Amount.ToString("F2");
         profitsValueText.text = (EarningSystem.Instance.Earnings.ToArray()[0].Amount - _total).ToString("F2");
