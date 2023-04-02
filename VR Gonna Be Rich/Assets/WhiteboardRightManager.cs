@@ -8,38 +8,65 @@ using UnityEngine.UI;
 
 public class WhiteboardRightManager : MonoBehaviour
 {
-    private DateTime _date;
-    private float _balance;
-    private float _saveingBalance;
-    private float _investment;
     
 
     [SerializeField] private TextMeshProUGUI dateField;
 
-    [SerializeField] private TextMeshProUGUI balanceField;
+    [SerializeField] private TextMeshProUGUI bankAccountBalanceField;
 
-    [SerializeField] private Button nextDate;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TextMeshProUGUI savingsAccountBalanceField;
+    
+    [SerializeField] private TextMeshProUGUI investmentsAccountBalanceField;
+
+    [SerializeField] private TextMeshProUGUI netWorthField;
+
+
+    private void OnEnable()
     {
-        _date = DateTime.Today;
-        dateField.text = _date.ToString(CultureInfo.CurrentCulture);
-        balanceField.text = "650€";
-
+        DateManager.Instance.OnCurrentDateChanged += DateChanged;
+        BankAccountManager.Instance.OnAccountBalanceChanged += BankAccountBalanceChanged;
+        SavingsSystem.Instance.OnSavingsChanged += SavingsAccountBalanceChanged;
+        InvestmentsManager.Instance.OnInvestmentsChanged += InvestmentsAccountBalanceChanged;
+        
+        DateChanged(DateManager.Instance.CurrentDate);
+        BankAccountBalanceChanged(BankAccountManager.Instance.Balance);
+        SavingsAccountBalanceChanged(SavingsSystem.Instance.Savings);
+        InvestmentsAccountBalanceChanged(InvestmentsManager.Instance.Investments);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DateChanged(DateTime date)
     {
-        if (dateField.text != _date.ToString(CultureInfo.CurrentCulture))
-        {
-            dateField.text = _date.ToString(CultureInfo.CurrentCulture);
-        }   
+        dateField.text = date.ToString("d.M.yyyy");
     }
 
-    public void NextDate()
+    public void BankAccountBalanceChanged(float value)
     {
-        _date += TimeSpan.FromDays(1);
-        balanceField.text = "500€";
+        bankAccountBalanceField.text = value.ToString("F2");
+        CalculateNetWorth();
+    }
+    
+    public void SavingsAccountBalanceChanged(float value)
+    {
+        savingsAccountBalanceField.text = value.ToString("F2");
+        CalculateNetWorth();
+    }
+    
+    public void InvestmentsAccountBalanceChanged(float value)
+    {
+        investmentsAccountBalanceField.text = value.ToString("F2");
+        CalculateNetWorth();
+    }
+
+    public void CalculateNetWorth()
+    {
+        var netWorth = BankAccountManager.Instance.Balance + SavingsSystem.Instance.Savings +
+                       InvestmentsManager.Instance.Investments;
+
+        netWorthField.text = "Net worth: " + netWorth.ToString("F2");
+    }
+
+    public void AdvanceTime()
+    {
+        DateManager.Instance.OnAdvanceTimeButtonClick();
     }
 }

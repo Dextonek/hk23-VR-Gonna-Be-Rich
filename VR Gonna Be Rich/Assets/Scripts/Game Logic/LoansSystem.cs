@@ -72,6 +72,9 @@ namespace Game_Logic
 
         public void PayLoans(DateTime currentDate)
         {
+            if(Loans == null)
+                return;
+            
             foreach (var loan in Loans)
             {
                 loan.Amount -= loan.MonthlyPayment;

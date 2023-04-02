@@ -27,7 +27,7 @@ namespace Game_Logic
                     OnMonthAdvanced?.Invoke(value);
                 }
 
-                _currentDate = CurrentDate;
+                _currentDate = value;
                 OnCurrentDateChanged?.Invoke(value);
             }
 
