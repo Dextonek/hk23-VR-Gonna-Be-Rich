@@ -37,7 +37,6 @@ namespace Game_Logic
         }
             
         public delegate void OnEarningsChangedDelegate(List<Earning> earnings);
-    
         public event OnEarningsChangedDelegate OnEarningsChanged;
             
         private void Awake()
