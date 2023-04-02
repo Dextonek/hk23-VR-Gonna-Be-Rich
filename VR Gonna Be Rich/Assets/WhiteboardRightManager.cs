@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
+using Game_Logic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +9,10 @@ using UnityEngine.UI;
 public class WhiteboardRightManager : MonoBehaviour
 {
     private DateTime _date;
+    private float _balance;
+    private float _saveingBalance;
+    private float _investment;
+    
 
     [SerializeField] private TextMeshProUGUI dateField;
 
